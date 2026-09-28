@@ -1,6 +1,6 @@
 # Zero Waste Cafe
 
-A simple static restaurant website for EMBER, a concept cafe focused on thoughtful food, open-fire cooking, and a clean browsing experience.
+A simple static restaurant website for Zero Waste Cafe, a concept cafe focused on thoughtful food, less waste, and a clean browsing experience.
 
 ## Live Link
 
