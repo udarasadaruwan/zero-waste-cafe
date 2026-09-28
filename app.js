@@ -193,7 +193,7 @@ form.addEventListener("submit", (event) => {
   const guests = values.get("guests");
   const note = String(values.get("note")).trim() || "No special note.";
   const message = [
-    "Hello EMBER, I would like to reserve a table.",
+    "Hello , I would like to reserve a table.",
     "",
     `Name: ${name}`,
     `Date: ${formattedDate}`,
