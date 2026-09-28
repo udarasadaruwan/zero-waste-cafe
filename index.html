@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="EMBER. A concept restaurant celebrating open-fire cooking, thoughtful ingredients, and good company. Explore the menu."
+    />
+    <title>EMBER — Food, without the noise.</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23151515'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23e94432'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="header wrap">
+      <a class="wordmark" href="#" aria-label="Ember home"
+        >ember<span class="brand-dot">.</span></a
+      >
+      <button
+        class="nav-toggle"
+        aria-expanded="false"
+        aria-controls="navigation"
+      >
+        Menu <span aria-hidden="true">＋</span>
+      </button>
+      <nav id="navigation" class="navigation" aria-label="Main navigation">
+        <a href="#menu">The menu</a><a href="#approach">Our approach</a
+        ><a href="#visit">Find us</a>
+      </nav>
+      <button class="button button-small header-book" data-book>
+        Find a table <span aria-hidden="true">↗</span>
+      </button>
+    </header>
+    <main id="main">
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="red-dot"></span> OPEN FIRE. OPEN MINDS.
+          </p>
+          <h1 id="hero-title">
+            Less noise.<br />More <span class="dot-type">flavour.</span>
+          </h1>
+          <p class="hero-description">
+            Good ingredients. A little fire.<br />Nothing between you and a
+            great meal.
+          </p>
+          <a class="button" href="#menu"
+            >Explore the menu <span aria-hidden="true">↗</span></a
+          >
+          <div class="hero-note">
+            <span class="line-mark" aria-hidden="true"></span
+            ><span>Thoughtfully made.<br />Best enjoyed slowly.</span>
+          </div>
+        </div>
+        <figure class="hero-image">
+          <img
+            src="assets/cauliflower.webp"
+            width="1024"
+            height="1024"
+            alt="Fire-roasted cauliflower with green herb oil on a black ceramic plate"
+            fetchpriority="high"
+          />
+          <div class="image-index" aria-hidden="true">01 / THE FIRE SERIES</div>
+          <figcaption>
+            <div>
+              <span class="eyebrow">FROM THE FIRE</span
+              ><strong>Cauliflower, reimagined.</strong>
+            </div>
+            <a
+              href="#menu"
+              aria-label="Explore the cauliflower and other dishes"
+              >↗</a
+            >
+          </figcaption>
+        </figure>
+      </section>
+      <div class="manifesto-strip">
+        <div class="wrap">
+          <span>FIRE-LED COOKING</span><span aria-hidden="true">✳</span
+          ><span>SEASONAL THINKING</span><span aria-hidden="true">✳</span
+          ><span>LESS, BUT BETTER</span>
+        </div>
+      </div>
+      <section
+        id="menu"
+        class="menu-section wrap section-space"
+        aria-labelledby="menu-title"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">01 — THE MENU</p>
+            <h2 id="menu-title">Small menu.<br />Big feelings.</h2>
+          </div>
+          <p>Only the things we love to make.<br />Pick your moment.</p>
+        </div>
+        <div class="menu-toolbar">
+          <div class="filters" role="group" aria-label="Menu category">
+            <button
+              class="filter active"
+              data-category="plates"
+              aria-pressed="true"
+            >
+              Plates <span>04</span></button
+            ><button class="filter" data-category="sides" aria-pressed="false">
+              On the side <span>02</span></button
+            ><button class="filter" data-category="drinks" aria-pressed="false">
+              Something to sip <span>02</span>
+            </button>
+          </div>
+          <span class="currency">PRICES IN LKR</span>
+        </div>
+        <div id="menu-items" class="menu-items" aria-live="polite"></div>
+        <p class="menu-footnote">
+          Made to order. Please tell us about any allergies before dining.
+          <span>V = vegetarian · VG = vegan</span>
+        </p>
+      </section>
+      <section id="approach" class="approach-section">
+        <div class="wrap approach-inner">
+          <div>
+            <p class="eyebrow">02 — OUR APPROACH</p>
+            <h2>Nothing extra.<br />Everything considered.</h2>
+          </div>
+          <div class="approach-copy">
+            <p>
+              We believe a good meal needs very little. Ingredients with
+              character. Time over the fire. People you want to share it with.
+            </p>
+            <p>
+              So we keep the menu small and let each ingredient have its moment.
+              No distractions. Just a place to settle in.
+            </p>
+            <span class="signature">THAT’S THE EMBER WAY.</span>
+          </div>
+        </div>
+      </section>
+      <section id="visit" class="visit-section wrap section-space">
+        <p class="eyebrow">03 — MAKE AN EVENING OF IT</p>
+        <div class="visit-heading">
+          <h2>A seat.<br />A little escape.</h2>
+          <button class="button" data-book>
+            Find your table <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+        <div class="visit-details">
+          <div>
+            <span class="eyebrow">THE NEIGHBOURHOOD</span>
+            <p>Colombo, Sri Lanka</p>
+            <span class="muted"
+              >Concept location · address to be announced</span
+            >
+          </div>
+          <div>
+            <span class="eyebrow">AT THE TABLE</span>
+            <p>Tuesday — Sunday</p>
+            <span class="muted">Proposed hours · 12:00 — 22:00</span>
+          </div>
+          <div>
+            <span class="eyebrow">COME AS YOU ARE</span>
+            <p>Good food. Good company.</p>
+            <span class="muted">Leave a little room for dessert.</span>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer wrap">
+      <a class="wordmark" href="#">ember<span class="brand-dot">.</span></a>
+      <p>
+        A restaurant concept by Udara.<br /><span
+          >Reservations handled through WhatsApp · no online payments.</span
+        >
+      </p>
+    </footer>
+    <dialog id="booking-dialog" aria-labelledby="booking-title">
+      <div class="dialog-top">
+        <span class="eyebrow">A LITTLE SOMETHING TO LOOK FORWARD TO</span
+        ><button class="close-button" aria-label="Close reservation dialog">
+          ×
+        </button>
+      </div>
+      <h2 id="booking-title">Your evening,<br />at ember.</h2>
+      <p class="demo-note">
+        Send your reservation request to us on WhatsApp. We will confirm
+        availability there.
+      </p>
+      <form id="booking-form">
+        <label
+          >Name<input
+            id="booking-name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            required
+        /></label>
+        <div class="form-row">
+          <label
+            >Date<input
+              id="booking-date"
+              name="date"
+              type="date"
+              required /></label
+          ><label
+            >Guests<select name="guests">
+              <option value="2">2 guests</option>
+              <option value="1">1 guest</option>
+              <option value="3">3 guests</option>
+              <option value="4">4 guests</option>
+              <option value="5">5 guests</option>
+              <option value="6">6 guests</option>
+            </select></label
+          >
+        </div>
+        <label
+          >Preferred time<select name="time">
+            <option>12:00</option>
+            <option>13:30</option>
+            <option>18:00</option>
+            <option selected>19:30</option>
+            <option>21:00</option>
+          </select></label
+        >
+        <label
+          >Note<textarea
+            id="booking-note"
+            name="note"
+            rows="3"
+            placeholder="Any allergies, occasion, or seating request?"
+          ></textarea>
+        </label>
+        <p id="booking-error" class="error" role="alert"></p>
+        <button class="button" type="submit">
+          Send on WhatsApp <span aria-hidden="true">↗</span>
+        </button>
+      </form>
+      <div id="booking-result" hidden role="status">
+        <p class="eyebrow">WHATSAPP IS READY</p>
+        <p id="booking-summary"></p>
+        <p class="demo-note">
+          Please send the message in WhatsApp so we can confirm your table.
+        </p>
+        <button class="button" id="booking-reset">
+          Choose another evening
+        </button>
+      </div>
+    </dialog>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

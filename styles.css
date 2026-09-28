@@ -1,0 +1,954 @@
+/* 1. Design tokens: change these values to retheme the entire site. */
+:root {
+  --paper: #f7f7f2;
+  --ink: #20201e;
+  --muted: #696963;
+  --line: #d9d9d2;
+  --accent: #ff6a2b;
+  --accent-hover: #ffb020;
+  --dark: #171918;
+  --space: clamp(1.25rem, 5vw, 5rem);
+  --radius: 3px;
+  --font: Arial, Helvetica, sans-serif;
+  --mono: "Courier New", monospace;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --motion-fast: 160ms;
+  --motion-medium: 420ms;
+}
+
+/* 2. Base and accessibility. */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 5px;
+}
+
+h1,
+h2,
+p,
+figure {
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-weight: 500;
+  letter-spacing: -0.065em;
+  line-height: 1.04;
+}
+
+h2 {
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.wrap {
+  width: min(1440px, 100%);
+  margin-inline: auto;
+  padding-inline: var(--space);
+}
+
+.section-space {
+  padding-block: 6rem;
+}
+
+.eyebrow {
+  font: 0.75rem/1.5 var(--mono);
+  letter-spacing: 0.09em;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 1rem;
+  z-index: 10;
+  background: var(--paper);
+  padding: 1rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* 3. Shared components. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  min-height: 54px;
+  padding: 0.95rem 1.45rem;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: white;
+  font-size: 0.875rem;
+  transition:
+    background var(--motion-fast),
+    border-color var(--motion-fast),
+    box-shadow var(--motion-fast),
+    transform var(--motion-fast) var(--ease-out);
+}
+
+.button:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  box-shadow: 0 12px 28px rgba(32, 32, 30, 0.12);
+  transform: translateY(-2px);
+}
+
+.button span {
+  display: inline-block;
+  font-size: 1.3rem;
+  line-height: 1;
+  transition: transform var(--motion-fast) var(--ease-out);
+}
+
+.button:hover span {
+  transform: translate(2px, -2px);
+}
+
+.button-small {
+  min-height: 44px;
+  padding: 0.7rem 1rem;
+}
+
+.wordmark {
+  font-size: 2.15rem;
+  font-weight: 800;
+  letter-spacing: -0.09em;
+}
+
+.brand-dot {
+  color: var(--accent);
+}
+
+.red-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-right: 0.6rem;
+}
+
+/* 4. Page sections. Each block owns its own layout. */
+.header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.navigation {
+  display: flex;
+  gap: 2.5rem;
+  font-size: 0.875rem;
+}
+
+.navigation a {
+  padding: 0.75rem 0;
+  transition: color var(--motion-fast);
+}
+
+.navigation a:hover {
+  color: var(--accent);
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.02fr 1fr;
+  gap: 3rem;
+  padding-block: 3rem 4rem;
+  align-items: center;
+}
+
+.hero-copy {
+  padding-block: 1rem;
+  animation: soft-rise 0.7s var(--ease-out) both;
+}
+
+.hero h1 {
+  font-size: clamp(3.7rem, 6.7vw, 6.6rem);
+  margin: 1.9rem 0 1.65rem;
+}
+
+.dot-type {
+  color: var(--ink);
+  background: radial-gradient(circle, var(--ink) 1.3px, transparent 1.7px);
+  background-size: 4px 4px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.hero-note {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font: 0.75rem/1.5 var(--mono);
+  color: var(--muted);
+  margin-top: 2.8rem;
+}
+
+.line-mark {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 4px,
+    var(--muted) 4px 5px
+  );
+  transform: rotate(-30deg);
+}
+
+.hero-image {
+  position: relative;
+  background: var(--dark);
+  aspect-ratio: 1/1.07;
+  overflow: hidden;
+  border-radius: 90px 4px 4px 4px;
+  color: #fff;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: arrive 0.8s var(--ease-out) both;
+  transition: transform 0.7s var(--ease-out);
+}
+
+.hero-image:hover img {
+  transform: scale(1.018);
+}
+
+.image-index {
+  position: absolute;
+  top: 1.7rem;
+  right: 1.6rem;
+  font: 0.75rem var(--mono);
+  letter-spacing: 0.08em;
+}
+
+.hero-image figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 3rem 1.8rem 1.7rem;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.88));
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.hero-image strong {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-top: 0.45rem;
+}
+
+.hero-image figcaption a {
+  border: 1px solid #777;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  transition:
+    background var(--motion-fast),
+    border-color var(--motion-fast),
+    transform var(--motion-fast) var(--ease-out);
+}
+
+.hero-image figcaption a:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+  transform: translate(2px, -2px);
+}
+
+.manifesto-strip {
+  border-block: 1px solid var(--line);
+}
+
+.manifesto-strip .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 1.3rem;
+  font: 0.75rem var(--mono);
+  letter-spacing: 0.14em;
+}
+
+.manifesto-strip span:nth-child(even) {
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: 2.8rem;
+}
+
+.section-heading h2 {
+  margin-top: 1rem;
+}
+
+.section-heading > p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.menu-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  gap: 1rem;
+}
+
+.filters {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.filter {
+  border: 0;
+  background: transparent;
+  padding: 1rem 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+  border-bottom: 2px solid transparent;
+  min-height: 48px;
+  transition:
+    border-color var(--motion-fast),
+    color var(--motion-fast),
+    transform var(--motion-fast) var(--ease-out);
+}
+
+.filter:hover {
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.filter span {
+  font: 0.75rem var(--mono);
+  margin-left: 0.4rem;
+}
+
+.filter.active {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.currency {
+  font: 0.75rem var(--mono);
+  color: var(--muted);
+}
+
+.menu-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 4rem;
+  min-height: 250px;
+}
+
+.dish {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 1.5rem;
+  justify-content: space-between;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity var(--motion-medium) var(--ease-out),
+    transform var(--motion-medium) var(--ease-out),
+    border-color var(--motion-fast);
+  transition-delay: calc(var(--stagger, 0) * 55ms);
+}
+
+.menu-items.is-ready .dish {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dish:hover {
+  border-color: #c3c3ba;
+}
+
+.dish h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.dish p {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.dish-price {
+  white-space: nowrap;
+  font: 0.875rem/1.7 var(--mono);
+}
+
+.diet {
+  display: inline-block;
+  font: 0.65rem var(--mono);
+  border: 1px solid var(--line);
+  padding: 0.15rem 0.3rem;
+  vertical-align: middle;
+  margin-left: 0.4rem;
+}
+
+.menu-footnote {
+  color: var(--muted);
+  font-size: 0.75rem;
+  margin-top: 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.approach-section {
+  background: var(--dark);
+  color: #f4f4ed;
+}
+
+.approach-inner {
+  padding-block: 5rem;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 5rem;
+}
+
+.approach-inner h2 {
+  margin-top: 1.6rem;
+}
+
+.approach-copy p {
+  color: #cccfc7;
+  line-height: 1.9;
+  margin-bottom: 1.2rem;
+}
+
+.signature {
+  display: block;
+  color: #e98b74;
+  font: 0.75rem var(--mono);
+  letter-spacing: 0.1em;
+  margin-top: 2rem;
+}
+
+.visit-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 1rem 0 3rem;
+}
+
+.visit-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.visit-details p {
+  margin: 0.6rem 0 0.2rem;
+}
+
+.footer {
+  border-top: 1px solid var(--line);
+  padding-block: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footer p {
+  font-size: 0.75rem;
+  line-height: 1.8;
+}
+
+.footer p span {
+  color: var(--muted);
+}
+
+.footer > a:last-child {
+  font-size: 0.875rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color var(--motion-fast);
+}
+
+.footer > a:last-child:hover {
+  color: var(--accent);
+}
+
+/* 5. Booking dialog. Native dialog provides modal keyboard focus handling. */
+dialog {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 2rem;
+  width: min(520px, calc(100% - 2rem));
+  max-height: 90dvh;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+dialog[open] {
+  animation: dialog-rise 0.22s var(--ease-out) both;
+}
+
+dialog::backdrop {
+  background: #111a;
+  backdrop-filter: blur(5px);
+  animation: backdrop-fade 0.22s ease both;
+}
+
+.dialog-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.close-button {
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid var(--line);
+  width: 44px;
+  height: 44px;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  transition:
+    background var(--motion-fast),
+    transform var(--motion-fast) var(--ease-out);
+}
+
+.close-button:hover {
+  background: #fff;
+  transform: rotate(6deg);
+}
+
+dialog h2 {
+  font-size: 2.8rem;
+}
+
+.demo-note {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin: 1.2rem 0;
+  line-height: 1.6;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+label {
+  display: block;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin-top: 0.4rem;
+  min-height: 48px;
+  padding: 0.65rem;
+  border: 1px solid #b8b8b0;
+  border-radius: 3px;
+  background: #fff;
+  color: var(--ink);
+  transition:
+    border-color var(--motion-fast),
+    box-shadow var(--motion-fast);
+}
+
+input:hover,
+select:hover,
+textarea:hover,
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--ink);
+}
+
+textarea {
+  resize: vertical;
+}
+
+form .button {
+  width: 100%;
+}
+
+.error {
+  color: var(--accent);
+  font-size: 0.875rem;
+  margin-bottom: 0.8rem;
+}
+
+#booking-summary {
+  font-size: 1.4rem;
+  margin: 1rem 0;
+}
+
+/* 6. Subtle entrances; no infinite animation or scroll-jacking. */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.55s var(--ease-out),
+    transform 0.55s var(--ease-out);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: scale(1.025);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes soft-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dialog-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes backdrop-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 7. Responsive overrides stay together and follow the desktop blocks. */
+@media (min-width: 1600px) {
+  .hero {
+    padding-block: 4rem;
+  }
+  .hero-image {
+    max-height: 660px;
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    height: 84px;
+  }
+  .navigation {
+    gap: 1.25rem;
+  }
+  .hero {
+    gap: 1.5rem;
+  }
+  .hero h1 {
+    font-size: clamp(3.1rem, 7vw, 4.7rem);
+  }
+  .hero-image {
+    aspect-ratio: 1/1.3;
+    border-top-left-radius: 60px;
+  }
+  .hero-note {
+    margin-top: 1.5rem;
+  }
+  .menu-items {
+    column-gap: 2rem;
+  }
+  .approach-inner {
+    gap: 2.5rem;
+  }
+  .section-space {
+    padding-block: 4rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    flex-wrap: wrap;
+    gap: 1rem;
+    position: relative;
+    height: 76px;
+  }
+  .wordmark {
+    font-size: 1.9rem;
+  }
+  .header-book {
+    margin-left: auto;
+    gap: 1rem;
+    font-size: 0.75rem;
+  }
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    order: 3;
+    padding: 0.6rem;
+    border: 0;
+    background: transparent;
+    font-size: 0.875rem;
+    min-height: 44px;
+  }
+  .navigation {
+    display: none;
+    position: absolute;
+    top: 75px;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    background: var(--paper);
+    padding: 1rem var(--space);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  .navigation.is-open {
+    display: flex;
+  }
+  .navigation a {
+    padding: 0.8rem 0;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    padding-block: 2rem;
+    gap: 2rem;
+  }
+  .hero h1 {
+    font-size: clamp(3.3rem, 13vw, 5rem);
+    margin-block: 1.5rem;
+  }
+  .hero-description {
+    font-size: 1rem;
+  }
+  .hero-note {
+    display: none;
+  }
+  .hero-image {
+    aspect-ratio: 1/1;
+    border-top-left-radius: 65px;
+  }
+  .hero-image figcaption {
+    padding: 3rem 1.25rem 1.25rem;
+  }
+  .manifesto-strip .wrap {
+    font-size: 0.65rem;
+    letter-spacing: 0.03em;
+    gap: 0.5rem;
+  }
+  .manifesto-strip span:nth-child(even) {
+    font-size: 1rem;
+  }
+  .section-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 1.7rem;
+  }
+  .menu-toolbar {
+    align-items: start;
+    flex-direction: column;
+    gap: 0;
+  }
+  .filters {
+    width: 100%;
+    gap: 1.2rem;
+  }
+  .filter {
+    font-size: 0.875rem;
+  }
+  .filter span {
+    display: none;
+  }
+  .currency {
+    padding-bottom: 0.65rem;
+  }
+  .menu-items {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .dish {
+    padding: 1.4rem 0;
+  }
+  .menu-footnote {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .approach-inner {
+    grid-template-columns: 1fr;
+    padding-block: 3.5rem;
+    gap: 2rem;
+  }
+  .visit-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+  .visit-details {
+    grid-template-columns: 1fr;
+    gap: 1.7rem;
+  }
+  .footer {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .footer p {
+    order: 3;
+    width: 100%;
+  }
+  dialog {
+    padding: 1.4rem;
+  }
+  .dialog-top > .eyebrow {
+    font-size: 0.65rem;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal-on-scroll,
+  .dish {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
