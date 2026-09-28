@@ -4,7 +4,7 @@ A simple static restaurant website for Zero Waste Cafe, a concept cafe focused o
 
 ## Live Link
 
-Add live site link here: `https://udarasadaruwan.github.io/zero-waste-cafe/`
+Add live site link here: ['https://udarasadaruwan.github.io/zero-waste-cafe/']
 
 ## Project Files
 
