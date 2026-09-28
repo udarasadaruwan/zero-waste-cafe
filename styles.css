@@ -183,7 +183,8 @@ img {
 .wordmark {
   font-size: 2.15rem;
   font-weight: 800;
-  letter-spacing: -0.09em;
+  letter-spacing: 0;
+  line-height: 1.05;
 }
 
 .brand-dot {
@@ -794,26 +795,30 @@ form .button {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 760px) {
   .header {
-    flex-wrap: wrap;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.75rem 1rem;
     position: relative;
-    height: 76px;
+    height: auto;
+    min-height: 76px;
+    padding-block: 1rem 0.75rem;
   }
   .wordmark {
-    font-size: 1.9rem;
+    grid-column: 1 / -1;
+    font-size: 1.55rem;
   }
   .header-book {
-    margin-left: auto;
+    justify-self: start;
     gap: 1rem;
     font-size: 0.75rem;
   }
   .nav-toggle {
     display: flex;
     align-items: center;
+    justify-self: end;
     gap: 0.5rem;
-    order: 3;
     padding: 0.6rem;
     border: 0;
     background: transparent;
@@ -823,7 +828,7 @@ form .button {
   .navigation {
     display: none;
     position: absolute;
-    top: 75px;
+    top: 100%;
     left: 0;
     right: 0;
     z-index: 5;
@@ -839,6 +844,9 @@ form .button {
   .navigation a {
     padding: 0.8rem 0;
   }
+}
+
+@media (max-width: 640px) {
   .hero {
     grid-template-columns: 1fr;
     padding-block: 2rem;
